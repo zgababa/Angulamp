@@ -1,0 +1,74 @@
+body {
+	background-color: LightSeaGreen;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+a:hover {
+	cursor : pointer;
+}
+.white {
+	color:white;
+}
+.white-light-interrupt {
+	margin-top: 50px;
+}
+.toggle-alarm-clock
+{
+	display:inline-block;
+	margin-top: 30px;
+}
+.fleche-lecture
+{
+	margin-top: -4px;
+}
+.choice-color-ambiance {
+	width: 20px;
+	height: 15px;
+	border-radius: 10px;
+	border: 1px solid grey;
+	margin : 10px 5px 0px 12px;
+}
+.choice-color-ambiance:hover {
+	border: 2px solid tomato;
+}
+.checkbox-replay-ambiance {
+	margin-top: 7px;
+}
+.play-ambiance {
+	margin-right: 12px;
+}
+.cog-ambiance
+{
+	margin-left: 12px;
+}
+#color-box-wheel
+{
+	background-color: black;
+	width: 200px;
+	height: 200px;
+	border: 1px solid DarkGray ;
+	border-radius: 10px;
+}
+.add-ambiance-color {
+	z-index: 2000;
+}
+
+.title-playlist:hover {
+	cursor :default;
+	font-weight: bold;
+	text-decoration: none;
+}
+.title-playlist {
+	cursor :default;
+	font-size: 1.2em;
+}
+
+.titlePlayer {
+	color: SlateGray;
+	font-family: Oldtown;
+	font-size: 1.5em;
+}
+

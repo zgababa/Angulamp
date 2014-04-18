@@ -1,0 +1,195 @@
+  <div class="container">
+    <div class="text-center">
+      <h2 class="page-header white">Admin </h2>
+    </div>
+
+  <div class="panel panel-info" ng-controller="ColorCtrl">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+          <i class="fa fa-pencil"></i>
+          <strong>Couleur</strong>
+        </h2>
+    </div>
+    <div class="row panel-body ">
+          <div class=" col-md-offset-2 col-md-4">
+           <color control="color" box="color-box-wheel" left="380" top="145" size="200" update="update()"> </color>
+          </div>
+          <div class="col-md-3">
+            <div id="color-box-wheel"></div>
+          </div>
+          <div class="col-md-2" >
+             <toggle-switch  model="switchStatus" done="switchState(switchStatus)"
+             ></toggle-switch>
+              <button type="button" class="btn btn-default btn-lg white-light-interrupt" ng-click="on()">
+                Lumière Blanche
+              </button>
+          </div>
+    </div>
+  </div> <!-- Panel One -->
+
+
+<!----------------- HEURE --------------------- -->
+  <div class="panel panel-info" ng-controller="TimepickerDemoCtrl">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+          <i class="fa fa-clock-o"></i>
+          <strong>Heure</strong>
+        </h2>
+    </div>
+
+    <div class="row panel-body">
+        <div class=" well col-md-offset-2 col-md-2 text-center"style="display:inline-block;">
+
+            <h4> <strong>Changez l'heure</strong> </h4>
+            <timepicker ng-model="myTime" show-meridian = "false" style="display:inline-block;">
+            </timepicker>
+            <button ng-click="changed()" type="button" class="btn  btn-block btn-success">
+              Valider
+            </button>
+        </div>
+        <div class="well col-md-offset-2 col-md-4 text-center">
+            <h4> <strong>Réveil<strong> </h4>
+            <div class="row">
+              <div class="col-md-6" ng-change="updateAlarm()" 
+               ng-model="alarmClock">
+                <timepicker  show-meridian = "false" hour-step="hstep2" minute-step="mstep2" style="display:inline-block;">
+                </timepicker>
+              </div>
+              <toggle-switch model="switchStatus" class="toggle-alarm-clock" done="switchState(switchStatus)"></toggle-switch>
+
+            </div>
+        </div>
+    </div>
+  </div> <!-- Panel Two -->
+
+
+
+
+
+
+
+
+<!------------------------- MUSIQUE -------------------->
+
+
+
+
+
+
+
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+          <i class="fa fa-music"></i>
+          <strong>Musique</strong>
+        </h2>
+    </div>
+    <div class="panel-body" ng-controller="ProgressDemoCtrl">
+   
+      <div class="text-center titlePlayer row ">
+          <div class="col-md-12" >
+            {{currentSong}}
+          </div>
+      </div>
+
+      <div ng-controller="AccordionDemoCtrl" >
+        <accordion class="row" close-others="oneAtATime">
+          <div  class="col-md-4" ng-init="addPlaylist(group)" ng-repeat="group in groups">
+           <audio data-player-control="audioPlayer[group.name]" data-playlist="playlist[group.name]" audio-player >
+           </audio>
+            <accordion-group is-open="group.open">
+              <accordion-heading >
+  
+              <span class="title-playlist col-md-12 row " ng-click="group.open = !group.open"> {{group.name}} 
+              </span>
+              <span ng-controller="ModalDemoCtrl"> 
+                  <i class="pull-right fa fa-cog cog-ambiance" ng-click="open('edit', $index)"></i>
+              </span>
+              <br>
+              <br>  
+             <div class="row">
+                     <div class="text-center">
+                       <i class="fa fa-play fa-2x" ng-click="pause(); audioPlayer[group.name].playPause();" ng-class="{'fa-pause fa-2x': audioPlayer[group.name].playing, 'fa-play fa-2x': !audioPlayer[group.name].playing }"></i>
+                     </div>
+                    <br>
+                    <!-- PREV -->
+                      <div class="col-sm-1 "> 
+                        <i ng-click="audioPlayer[group.name].prev()" class="fa fa-backward fa fleche-lecture "></i>
+                      </div>
+                    <!-- PROGRESS -->
+                      <div class="col-sm-10">
+                        <progressbar ng-class="{'progress-striped active': audioPlayer[group.name].playing, 'progress-striped': !audioPlayer[group.name].playing }"
+                          value="audioPlayer[group.name].currentTime*100/audioPlayer[group.name].duration"
+                          type="info">
+                       </progressbar>
+                      </div>
+                    <!-- NEXT -->
+                      <i ng-click="audioPlayer[group.name].next()" class="fa fa-forward fa fleche-lecture"></i>
+              </div> 
+             
+              </accordion-heading>
+              <div ng-controller="TabsDemoCtrl" >
+                <tabset vertical="true" type="navType">
+                  <tab ng-model="tabs" ng-click="playSong($index, song.title, audioPlayer[group.name])" ng-repeat="song in group.songs" >
+                    <tab-heading>
+                         {{song.title}} 
+                    </tab-heading>
+                  </tab> 
+                </tabset>
+              </div>
+             </accordion-group>
+          </div>
+        </accordion>
+      </div>       
+      <br>
+    <div ng-controller="ModalDemoCtrl" class="text-center">
+      <i ng-click="open()" class="fa fa-plus-circle fa-3x"></i>
+    </div>    
+   </div> 
+  </div> <!-- Panel Two -->
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------- AMBIANCE ---------------------->
+
+
+  <div class="panel panel-info" >
+    <div class="panel-heading">
+        <h2 class="panel-title">
+          <i class="fa fa-lightbulb-o"></i>
+          <strong>Ambiance</strong>
+        </h2>
+    </div>
+    <div class="row panel-body">
+        <button class="col-md-offset-1 col-md-2 btn btn-default 
+                btn-lg" type="button">
+                
+            <i  ng-click="playAmbiance= !playAmbiance" 
+                ng-class="{'fa fa-pause': playAmbiance, 
+                           'fa fa-play': !playAmbiance}">
+            </i>   
+             Ambiance 1
+            <span ng-controller="ModalAmbianceCtrl"> 
+                <i class="fa fa-cog cog-ambiance" ng-click="open('edit')"></i>
+            </span>
+        </button>
+
+    </div>
+    
+    <div class="text-center row" ng-controller="ModalAmbianceCtrl">
+      <i ng-click="open()" class="fa fa-plus-circle fa-3x">
+      </i>
+    </div>
+    <br>
+  </div>
+
+</div>  <!-- container -->   

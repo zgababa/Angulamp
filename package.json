@@ -1,0 +1,20 @@
+{
+"name": "apiP14",
+"version": "0.0.1",
+"author": "Fabien de Maestri",
+"description": "Api pour communiquer avec la lampe et l'interface",
+"private":true,
+"dependencies": {
+"express": "3.4.x",
+"winston": "0.7.x",
+"mongodb": "1.3.x",
+"mongoose":"3.8.x",
+"mocha": "1.17.x",
+"supertest": "0.8.x",
+"should":"2.1.x",
+"multiparty": "3.2.x"
+},
+"engine": {
+"node": "0.10.x"
+}
+}
